@@ -31,7 +31,7 @@ public class CoolWeatherDB {
 	/**
 	 * 将构造方法私有化
 	 */
-	public CoolWeatherDB(Context context) {
+	private CoolWeatherDB(Context context) {
 		CoolWeatherOpenHelper dbHelper = new CoolWeatherOpenHelper(context, DB_NAME, null, VERSION);
 		db = dbHelper.getWritableDatabase();
 	}
@@ -107,7 +107,7 @@ public class CoolWeatherDB {
 				city.setCityCode(cursor.getString(cursor.getColumnIndex("city_code")));
 				city.setProvinceId(provinceId);
 				list.add(city);
-			}while(cursor.moveToFirst());
+			}while(cursor.moveToNext());
 		}
 		if(cursor!=null){
 			cursor.close();
